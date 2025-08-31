@@ -1,0 +1,147 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { CheckCircle, ArrowRight } from 'lucide-react'
+
+export function FeatureSection() {
+  const [activeWord, setActiveWord] = useState(0)
+  const [morphing, setMorphing] = useState(false)
+
+  const words = ['CHALLENGE', 'SOLUTION', 'RESULTS', 'SUCCESS']
+  const content = {
+    CHALLENGE: {
+      subtitle: 'The Breaking Point',
+      description: 'COVID-19 decimated Western International Group\'s offline-first business model overnight.',
+      items: ['Legacy systems failing', 'E-commerce urgency', 'Complex operations', 'Impossible timelines']
+    },
+    SOLUTION: {
+      subtitle: 'The Transformation',
+      description: '90-day rapid deployment of enterprise e-commerce with AI-powered analytics.',
+      items: ['Platform deployment', 'Data unification', 'AI analytics', 'Supply optimization']
+    },
+    RESULTS: {
+      subtitle: 'The Achievement',
+      description: 'Record-breaking growth with industry-leading transformation speed.',
+      items: ['300% revenue increase', '80% faster processing', '45% better satisfaction', '12-month completion']
+    },
+    SUCCESS: {
+      subtitle: 'The Legacy',
+      description: 'Sustained post-pandemic growth with new competitive advantages.',
+      items: ['Market leadership', 'Competitive edge', 'Future-ready systems', 'Proven scalability']
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMorphing(true)
+      setTimeout(() => {
+        setActiveWord((prev) => (prev + 1) % words.length)
+        setMorphing(false)
+      }, 300)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentContent = content[words[activeWord]]
+
+  return (
+    <section className="py-16 dark:bg-[#18181B] text-[#FAFAFA] dark:text-[#FAFAFA] text-black relative overflow-hidden">
+      
+      {/* Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(250,250,250,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(250,250,250,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(250,250,250,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(250,250,250,0.03)_1px,transparent_1px)] bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      
+      <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+        
+        {/* Main Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left: Morphing Typography */}
+          <div className="space-y-6 lg:space-y-8">
+            <div className="text-sm uppercase tracking-widest text-[#FAFAFA]/60 dark:text-[#FAFAFA]/60 text-black/60 font-mono">
+              Western International Group
+            </div>
+            
+            <div className="relative overflow-hidden">
+              <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter transition-all duration-500 text-[#FAFAFA] dark:text-[#FAFAFA] text-black leading-none break-words ${
+                morphing ? 'scale-95 opacity-50 blur-sm' : 'scale-100 opacity-100 blur-0'
+              }`}>
+                {words[activeWord]}
+              </h1>
+              
+              {/* Glitch Effect */}
+              <div className={`absolute inset-0 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter text-[#FAFAFA] dark:text-[#FAFAFA] text-black transition-opacity duration-300 leading-none break-words ${
+                morphing ? 'opacity-30' : 'opacity-0'
+              }`} style={{
+                transform: 'translate(2px, -2px)',
+                WebkitTextStroke: '1px currentColor',
+                WebkitTextFillColor: 'transparent'
+              }}>
+                {words[activeWord]}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-2xl md:text-3xl font-medium tracking-tighter text-center text-balance lg:text-left text-[#FAFAFA] dark:text-[#FAFAFA] text-black">
+                {currentContent.subtitle}
+              </h2>
+              <p className="text-muted-foreground text-center text-balance font-medium lg:text-left leading-relaxed max-w-lg">
+                {currentContent.description}
+              </p>
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="flex gap-2 justify-center lg:justify-start">
+              {words.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    index === activeWord 
+                      ? `w-12 bg-[#FAFAFA] dark:bg-[#FAFAFA] bg-black` 
+                      : 'w-3 bg-[#27272A] dark:bg-[#27272A] bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className={`space-y-6 transition-all duration-700 ${
+            morphing ? 'translate-x-4 opacity-50' : 'translate-x-0 opacity-100'
+          }`}>
+            
+            {/* Items Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {currentContent.items.map((item, index) => (
+                <div
+                  key={index}
+                  className="group p-4 rounded-2xl border dark:border-[#27272A] border-[#F3F4F6] dark:bg-[#1C1C1F]/50 bg-transparent backdrop-blur-sm dark:hover:border-[#FAFAFA]/20 hover:border-[#27272A] transition-all duration-300 hover:transform hover:scale-105"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start gap-3">
+                    {words[activeWord] === 'RESULTS' ? (
+                      <CheckCircle className="h-4 w-4 dark:text-[#FAFAFA] text-black flex-shrink-0 mt-0.5" />
+                    ) : (
+                      <div className="w-2 h-2 rounded-full dark:bg-[#FAFAFA] bg-black mt-2 flex-shrink-0"></div>
+                    )}
+                    <span className="dark:text-muted-foreground text-black font-medium text-sm leading-relaxed break-words">
+                      {item}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <div className="pt-4 flex justify-center lg:justify-start">
+              <button className="group inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-[#FAFAFA] dark:border-[#FAFAFA] border-black text-[#FAFAFA] dark:text-[#FAFAFA] text-black hover:bg-[#FAFAFA] dark:hover:bg-[#FAFAFA] hover:bg-black hover:text-[#18181B] dark:hover:text-[#18181B] hover:text-white font-semibold transition-all duration-300">
+                <span className="text-sm">Explore Details</span>
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,151 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { CheckCircle, ArrowRight } from 'lucide-react'
+
+export function FeatureSection() {
+  const [activeWord, setActiveWord] = useState(0)
+  const [morphing, setMorphing] = useState(false)
+
+  const words = ['CHALLENGE', 'SOLUTION', 'RESULTS', 'SUCCESS']
+  const content = {
+    CHALLENGE: {
+      subtitle: 'The Breaking Point',
+      description: 'COVID-19 decimated Western International Group\'s offline-first business model overnight.',
+      items: ['Legacy systems failing', 'E-commerce urgency', 'Complex operations', 'Impossible timelines'],
+      color: 'text-red-500'
+    },
+    SOLUTION: {
+      subtitle: 'The Transformation',
+      description: '90-day rapid deployment of enterprise e-commerce with AI-powered analytics.',
+      items: ['Platform deployment', 'Data unification', 'AI analytics', 'Supply optimization'],
+      color: 'text-purple-500'
+    },
+    RESULTS: {
+      subtitle: 'The Achievement',
+      description: 'Record-breaking growth with industry-leading transformation speed.',
+      items: ['300% revenue increase', '80% faster processing', '45% better satisfaction', '12-month completion'],
+      color: 'text-green-500'
+    },
+    SUCCESS: {
+      subtitle: 'The Legacy',
+      description: 'Sustained post-pandemic growth with new competitive advantages.',
+      items: ['Market leadership', 'Competitive edge', 'Future-ready systems', 'Proven scalability'],
+      color: 'text-blue-500'
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMorphing(true)
+      setTimeout(() => {
+        setActiveWord((prev) => (prev + 1) % words.length)
+        setMorphing(false)
+      }, 300)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentContent = content[words[activeWord]]
+
+  return (
+    <section className="min-h-screen bg-[#18181B] dark:bg-[#18181B] light:bg-[#27272A] text-[#FAFAFA] dark:text-[#FAFAFA] light:text-[#27272A] relative overflow-hidden">
+      
+      {/* Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(250,250,250,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(250,250,250,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(250,250,250,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(250,250,250,0.03)_1px,transparent_1px)] light:bg-[linear-gradient(rgba(39,39,42,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(39,39,42,0.1)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+      
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        
+        {/* Main Layout */}
+        <div className="grid lg:grid-cols-2 gap-16 min-h-screen items-center">
+          
+          {/* Left: Morphing Typography */}
+          <div className="space-y-12">
+            <div className="text-sm uppercase tracking-widest text-gray-400 dark:text-gray-400 light:text-gray-600 font-mono">
+              Western International Group
+            </div>
+            
+            <div className="relative">
+              <h1 className={`text-8xl lg:text-9xl font-black tracking-tighter transition-all duration-500 ${
+                morphing ? 'scale-95 opacity-50 blur-sm' : 'scale-100 opacity-100 blur-0'
+              } ${currentContent.color}`}>
+                {words[activeWord]}
+              </h1>
+              
+              {/* Glitch Effect */}
+              <div className={`absolute inset-0 text-8xl lg:text-9xl font-black tracking-tighter ${currentContent.color} transition-opacity duration-300 ${
+                morphing ? 'opacity-30' : 'opacity-0'
+              }`} style={{
+                transform: 'translate(2px, -2px)',
+                WebkitTextStroke: '1px currentColor',
+                WebkitTextFillColor: 'transparent'
+              }}>
+                {words[activeWord]}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance lg:text-left">
+                {currentContent.subtitle}
+              </h2>
+              <p className="text-muted-foreground text-center text-balance font-medium lg:text-left text-lg leading-relaxed max-w-md">
+                {currentContent.description}
+              </p>
+            </div>
+
+            {/* Progress Indicator */}
+            <div className="flex gap-2">
+              {words.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    index === activeWord 
+                      ? `w-12 ${currentContent.color.replace('text-', 'bg-')}` 
+                      : 'w-3 bg-[#27272A] dark:bg-[#27272A] light:bg-[#F3F4F6]'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className={`space-y-8 transition-all duration-700 ${
+            morphing ? 'translate-x-4 opacity-50' : 'translate-x-0 opacity-100'
+          }`}>
+            
+            {/* Items Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {currentContent.items.map((item, index) => (
+                <div
+                  key={index}
+                  className="group p-6 rounded-2xl border border-[#27272A] dark:border-[#27272A] light:border-[#F3F4F6] bg-[#1C1C1F]/50 dark:bg-[#1C1C1F]/50 light:bg-[#FFFFFF]/50 backdrop-blur-sm hover:border-gray-600 dark:hover:border-gray-600 light:hover:border-gray-400 transition-all duration-300 hover:transform hover:scale-105"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start gap-3">
+                    {words[activeWord] === 'RESULTS' ? (
+                      <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    ) : (
+                      <div className={`w-2 h-2 rounded-full ${currentContent.color.replace('text-', 'bg-')} mt-2 flex-shrink-0`}></div>
+                    )}
+                    <span className="text-muted-foreground font-medium text-sm leading-relaxed">
+                      {item}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <div className="pt-8">
+              <button className={`group inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 transition-all duration-300 ${currentContent.color.replace('text-', 'border-')} ${currentContent.color} hover:bg-[#FAFAFA] dark:hover:bg-[#FAFAFA] light:hover:bg-[#27272A] hover:text-[#18181B] dark:hover:text-[#18181B] light:hover:text-[#FAFAFA] font-semibold`}>
+                <span>Explore Details</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

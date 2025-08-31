@@ -3,7 +3,7 @@
 import { Icons } from "@/components/icons";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
+// import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export function FooterSection() {

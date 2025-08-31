@@ -5,13 +5,13 @@ import {
   GlobeIcon,
   InputIcon,
   ArrowRightIcon,
-  ClockIcon,
+  // ClockIcon,
   StarFilledIcon,
   CheckIcon,
   LockClosedIcon,
-  RocketIcon,
-  LayersIcon,
-  Component1Icon,
+  // RocketIcon,
+  // LayersIcon,
+  // Component1Icon,
   DotFilledIcon,
 } from "@radix-ui/react-icons";
 

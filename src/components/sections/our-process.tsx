@@ -7,7 +7,7 @@ import {
   CheckIcon,
   ClockIcon,
   ArrowRightIcon,
-  DotFilledIcon
+  // DotFilledIcon
 } from "@radix-ui/react-icons";
 
 export function OurProcess() {

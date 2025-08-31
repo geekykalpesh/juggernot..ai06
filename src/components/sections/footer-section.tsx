@@ -3,7 +3,6 @@
 import { Icons } from "@/components/icons";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { useMediaQuery } from "@/hooks/use-media-query";
-// import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export function FooterSection() {
@@ -23,9 +22,9 @@ export function FooterSection() {
                 </p>
               </Link>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Dubai's leading enterprises trust us to turn AI ambition into
+                Dubai&apos;s leading enterprises trust us to turn AI ambition into
                 operational excellence. When UAE adds AI to Cabinet in 2026,
-                you'll already be ahead.
+                you&apos;ll already be ahead.
               </p>
               <div className="flex items-center gap-2 dark:hidden">
                 <Icons.soc2 className="size-12" />
@@ -166,7 +165,7 @@ export function FooterSection() {
                 </Link>
               </div>
               <p className="text-sm text-muted-foreground text-center md:text-right">
-                © 2025 Juggernot AI. Transforming Dubai's Enterprises with
+                © 2025 Juggernot AI. Transforming Dubai&apos;s Enterprises with
                 Intelligent Innovation.
               </p>
             </div>
@@ -194,11 +193,11 @@ export function FooterSection() {
         <div className="absolute inset-0 z-20 flex items-start justify-center px-6 ">
           <div className="text-center max-w-4xl mx-auto">
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 font-medium leading-relaxed mb-3">
-              Dubai's leading enterprises trust us to turn AI ambition into
+              Dubai&apos;s leading enterprises trust us to turn AI ambition into
               operational excellence.
             </p>
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-medium">
-              When UAE adds AI to Cabinet in 2026, you'll already be ahead.
+              When UAE adds AI to Cabinet in 2026, you&apos;ll already be ahead.
             </p>
           </div>
         </div>

@@ -145,10 +145,10 @@ export function ProblemSection() {
         {/* Compact Solution Teaser */}
         <div className="text-center bg-[#27272A] dark:bg-[#1C1C1F] rounded-xl p-6 text-[#FAFAFA]">
           <h3 className="text-xl font-semibold mb-2">
-            Sound familiar? You're not alone.
+            Sound familiar? You&apos;re not alone.
           </h3>
           <p className="text-sm opacity-90 mb-4 max-w-xl mx-auto leading-relaxed">
-            But there's a better way. Our proven methodology addresses every challenge with measurable results.
+            But there&apos;s a better way. Our proven methodology addresses every challenge with measurable results.
           </p>
           
           <button className="inline-flex items-center justify-center px-5 py-2 bg-[#FAFAFA] text-[#27272A] rounded-lg font-semibold hover:shadow-lg transition-all duration-200 text-sm">

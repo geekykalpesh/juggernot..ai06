@@ -147,7 +147,7 @@ export function LeadershipTeam() {
           </button>
           
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-            Trusted by Dubai's leading enterprises for strategic transformation
+            Trusted by Dubai&apos;s leading enterprises for strategic transformation
           </p>
         </div>
       </div>

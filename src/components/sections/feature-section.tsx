@@ -41,9 +41,9 @@ export function FeatureSection() {
     }, 4000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [words.length])
 
-  const currentContent = content[words[activeWord]]
+  const currentContent = content[words[activeWord] as keyof typeof content]
 
   return (
     <section className="py-16 dark:bg-[#18181B] text-[#FAFAFA] dark:text-[#FAFAFA] text-black relative overflow-hidden">

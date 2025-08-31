@@ -5,13 +5,9 @@ import {
   GlobeIcon,
   InputIcon,
   ArrowRightIcon,
-  // ClockIcon,
   StarFilledIcon,
   CheckIcon,
   LockClosedIcon,
-  // RocketIcon,
-  // LayersIcon,
-  // Component1Icon,
   DotFilledIcon,
 } from "@radix-ui/react-icons";
 
@@ -135,13 +131,13 @@ export function BentoDemo() {
             Why Choose Juggernot AI
           </h1>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed">
-            Why Dubai's Leading Enterprises Partner with Juggernot AI
+            Why Dubai&apos;s Leading Enterprises Partner with Juggernot AI
           </p>
         </div>
         
         {/* Compact Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
               key={feature.name}
               className={`group relative ${feature.className} bg-[#FFFFFF] dark:bg-[#1C1C1F] rounded-xl border border-[#F3F4F6] dark:border-[#27272A] p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden min-h-[140px]`}

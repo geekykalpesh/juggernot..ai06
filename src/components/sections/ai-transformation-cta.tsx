@@ -9,7 +9,7 @@ export function AIStrategySession() {
         {/* Compact Header */}
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-semibold text-[#27272A] dark:text-[#FAFAFA] mb-3">
-            Ready to Lead Dubai's AI Revolution?
+            Ready to Lead Dubai&apos;s AI Revolution?
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm leading-relaxed">
             Join elite enterprises transforming with AI in record time
